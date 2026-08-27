@@ -1,1 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Miguel Ângelo Marra de Souza — Analista de Suporte / Dev Web em Belo Horizonte.">
+<title>Miguel Ângelo Marra de Souza — Analista de Suporte / Dev Web</title>
+<style>
+  :root{
+    --bg: #060b16;
+    --bg-alt: #0b1424;
+    --panel: #0e1a30;
+    --border: #1c2c4a;
+    --text: #dbe4f3;
+    --text-dim: #7e91b3;
+    --accent: #3b82f6;
+    --accent-dim: #1d4ed8;
+    --accent-soft: rgba(59,130,246,0.12);
+    --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(59,130,246,0.10), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  header.hero{padding:96px 0 64px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(34px, 6vw, 52px);
+    line-height:1.12;
+    margin:0 0 28px;
+    color:#f2f6ff;
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    font-size:17px;
+    color:var(--text-dim);
+    max-width:58ch;
+    margin:0 0 32px;
+  }
+  .lede strong{color:var(--text);font-weight:600;}
+  .contacts{display:flex;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:13.5px;}
+  .contacts a, .footer-contacts a{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    color:var(--text);
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .contacts a svg, .footer-contacts a svg{
+    width:16px;height:16px;flex:0 0 auto;
+    color:var(--accent);
+  }
+  .contacts a:hover, .footer-contacts a:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+    background:var(--accent-soft);
+    text-decoration:none;
+  }
+
+  section{padding:52px 0;border-top:1px solid var(--border);}
+  .section-label{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    margin:0 0 8px;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:26px;
+    color:#f2f6ff;
+    margin:0 0 30px;
+  }
+
+  /* stack */
+  .stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 32px;}
+  @media (max-width:560px){.stack-grid{grid-template-columns:1fr;}}
+  .stack-cat h3{
+    font-family:var(--sans);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--accent);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  .stack-cat p{margin:0;color:var(--text);font-size:15px;}
+  .stack-cat .note{color:var(--text-dim);font-size:13px;margin-top:4px;}
+
+  /* experience */
+  .role{margin-bottom:34px;}
+  .role:last-child{margin-bottom:0;}
+  .role-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
+  .role-title{font-family:var(--serif);font-size:19px;color:#f2f6ff;}
+  .role-meta{font-family:var(--mono);font-size:12.5px;color:var(--accent);white-space:nowrap;}
+  .role ul{margin:0;padding-left:20px;color:var(--text-dim);font-size:15px;}
+  .role li{margin-bottom:6px;}
+  .role li::marker{color:var(--accent);}
+
+  /* education */
+  .edu-item{margin-bottom:20px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-title{font-family:var(--serif);font-size:18px;color:#f2f6ff;}
+  .edu-meta{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);margin-top:2px;}
+
+  /* contact / footer */
+  footer{padding:64px 0 48px;border-top:1px solid var(--border);}
+  footer h2{margin-bottom:14px;}
+  footer p{color:var(--text-dim);max-width:52ch;margin:0 0 26px;}
+  .footer-contacts{display:flex;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:14px;margin-bottom:44px;}
+  .signature{font-family:var(--mono);font-size:12px;color:var(--text-dim);letter-spacing:0.02em;}
+
+  ::selection{background:var(--accent-dim);color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Analista de Suporte · Dev Web · Belo Horizonte, MG</p>
+    <h1>Miguel Ângelo Marra de Souza</h1>
+    <p class="lede">
+      Estou em transição de carreira para desenvolvimento web, construindo base em
+      <strong>HTML5, CSS3 e PHP</strong> enquanto curso o 4º período de Análise e
+      Desenvolvimento de Sistemas. Antes de programar, passei um ano dando suporte técnico
+      N1 para professores da rede municipal de BH — aprendi a resolver problema de gente
+      real sob pressão, e é essa mesma lógica que estou aplicando agora ao código.
+    </p>
+    <div class="contacts">
+      <a href="mailto:kdomiguel2@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+        kdomiguel2@gmail.com
+      </a>
+      <a href="tel:+5531994536764">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (31) 99453-6764
+      </a>
+      <a href="https://github.com/kdomiguel" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+        github.com/kdomiguel
+      </a>
+    </div>
+  </header>
+
+  <section id="stack">
+    <p class="section-label">Stack</p>
+    <h2>Com o que trabalho</h2>
+    <div class="stack-grid">
+      <div class="stack-cat">
+        <h3>Linguagens & tecnologias</h3>
+        <p>Python, C++, SQL</p>
+      </div>
+      <div class="stack-cat">
+        <h3>Em estudo</h3>
+        <p>HTML5, CSS3, PHP</p>
+        <p class="note">Base em construção</p>
+      </div>
+      <div class="stack-cat">
+        <h3>Sistemas & suporte</h3>
+        <p>Windows (base sólida), Linux (noções)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <p class="section-label">Trajetória</p>
+    <h2>Experiência</h2>
+
+    <div class="role">
+      <div class="role-head">
+        <span class="role-title">Suporte Técnico N1 — Prefeitura Municipal de Belo Horizonte</span>
+        <span class="role-meta">Estágio · 2025 – 2026</span>
+      </div>
+      <ul>
+        <li>Atendimento e suporte técnico N1 para professores da rede municipal de ensino.</li>
+        <li>Diagnóstico e resolução de problemas básicos em equipamentos e sistemas Windows e Linux.</li>
+        <li>Interface direta entre a demanda do usuário final e a solução técnica, sob rotina de alto volume de chamados.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="formacao">
+    <p class="section-label">Formação</p>
+    <h2>Estudo</h2>
+
+    <div class="edu-item">
+      <div class="edu-title">Análise e Desenvolvimento de Sistemas — Newton Paiva</div>
+      <div class="edu-meta">4º período · em andamento</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="section-label">Contato</p>
+    <h2>Vamos conversar</h2>
+    <p>
+      Estou aberto a oportunidades de suporte técnico, e a vagas de estágio ou trainee em
+      desenvolvimento back-end, front-end ou web — presencial em Belo Horizonte ou remoto.
+      Se quiser bater um papo, é só chamar.
+    </p>
+    <div class="footer-contacts">
+      <a href="mailto:kdomiguel2@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+        kdomiguel2@gmail.com
+      </a>
+      <a href="tel:+5531994536764">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (31) 99453-6764
+      </a>
+      <a href="https://github.com/kdomiguel" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+        github.com/kdomiguel
+      </a>
+    </div>
+    <p class="signature">Miguel Ângelo Marra de Souza · Belo Horizonte, MG</p>
+  </footer>
+</div>
+
+</body>
+</html>
+atualizando icones contato
