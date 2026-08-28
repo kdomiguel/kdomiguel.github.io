@@ -12,7 +12,7 @@
     --bg-alt: #0b1424;
     --panel: #0e1a30;
     --border: #1c2c4a;
-    --text: #dbe4f3;
+    --text: #f8fafc;
     --text-dim: #7e91b3;
     --accent: #3b82f6;
     --accent-dim: #1d4ed8;
@@ -114,19 +114,38 @@
   }
 
   /* stack */
-  .stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 32px;}
-  @media (max-width:560px){.stack-grid{grid-template-columns:1fr;}}
-  .stack-cat h3{
-    font-family:var(--sans);
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    color:var(--accent);
-    margin:0 0 10px;
-    font-weight:600;
+  .skill-groups{display:flex;flex-direction:column;gap:36px;}
+  .skill-group-label{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--text-dim);margin-bottom:18px;
   }
-  .stack-cat p{margin:0;color:var(--text);font-size:15px;}
-  .stack-cat .note{color:var(--text-dim);font-size:13px;margin-top:4px;}
+  .skill-group-label .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+  .skill-group-label.solid .dot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+  .skill-group-label.learning .dot{background:var(--text-dim);}
+  .skill-row{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    align-items:center;
+    gap:18px;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .skill-row:last-child{border-bottom:none;}
+  .skill-name{font-size:15px;color:var(--text);}
+  .skill-bar{display:flex;gap:5px;}
+  .skill-seg{
+    height:6px;flex:1;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:3px;
+  }
+  .skill-seg.filled{background:var(--accent);border-color:var(--accent);}
+  .skill-group.learning .skill-seg.filled{background:var(--text-dim);border-color:var(--text-dim);}
+  @media (max-width:520px){
+    .skill-row{grid-template-columns:110px 1fr;gap:12px;}
+    .skill-name{font-size:13.5px;}
+  }
 
   /* experience */
   .role{margin-bottom:34px;}
@@ -186,20 +205,86 @@
   <section id="stack">
     <p class="section-label">Stack</p>
     <h2>Com o que trabalho</h2>
-    <div class="stack-grid">
-      <div class="stack-cat">
-        <h3>Linguagens & tecnologias</h3>
-        <p>Python, C++, SQL</p>
+    <div class="skill-groups">
+
+      <div class="skill-group solid">
+        <p class="skill-group-label solid"><span class="dot"></span>Base sólida</p>
+        <div class="skill-row">
+          <span class="skill-name">Lógica de programação</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg filled"></div>
+            <div class="skill-seg filled"></div><div class="skill-seg "></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Windows</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg filled"></div>
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SQL</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg filled"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">C++</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg filled"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Cloud (AWS)</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Python</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg filled"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
       </div>
-      <div class="stack-cat">
-        <h3>Em estudo</h3>
-        <p>HTML5, CSS3, PHP</p>
-        <p class="note">Base em construção</p>
+
+      <div class="skill-group learning">
+        <p class="skill-group-label learning"><span class="dot"></span>Aprendendo agora</p>
+        <div class="skill-row">
+          <span class="skill-name">HTML5</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">CSS3</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">PHP</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Linux</span>
+          <div class="skill-bar">
+            <div class="skill-seg filled"></div><div class="skill-seg"></div>
+            <div class="skill-seg"></div><div class="skill-seg"></div>
+          </div>
+        </div>
       </div>
-      <div class="stack-cat">
-        <h3>Sistemas & suporte</h3>
-        <p>Windows (base sólida), Linux (noções)</p>
-      </div>
+
     </div>
   </section>
 
@@ -227,6 +312,14 @@
     <div class="edu-item">
       <div class="edu-title">Análise e Desenvolvimento de Sistemas — Newton Paiva</div>
       <div class="edu-meta">4º período · em andamento</div>
+      <p class="lede" style="font-size:14px;margin-top:10px;">
+        Cursando atualmente: Desenvolvimento Rápido em Python e Software Seguro.
+      </p>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-title">AWS Academy Graduate — Cloud Foundations</div>
+      <div class="edu-meta">Amazon Web Services Training and Certification · concluído em junho de 2025</div>
     </div>
   </section>
 
@@ -236,7 +329,7 @@
     <p>
       Estou aberto a oportunidades de suporte técnico, e a vagas de estágio ou trainee em
       desenvolvimento back-end, front-end ou web — presencial em Belo Horizonte ou remoto.
-      Caso tenha interesse em discutir sobre oportunidades de emprego, é só chamar.
+      Caso haja interessse em discutir contratação, é só chamar.
     </p>
     <div class="footer-contacts">
       <a href="mailto:kdomiguel2@gmail.com">
@@ -258,4 +351,3 @@
 
 </body>
 </html>
-atualizando icones contato
